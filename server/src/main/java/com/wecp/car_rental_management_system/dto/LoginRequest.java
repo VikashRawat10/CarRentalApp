@@ -36,31 +36,33 @@
 package com.wecp.car_rental_management_system.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Date;
+public class LoginRequest {
 
-public class BookingDto {
+    private String username;
+    private String password;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date rentalStartDate;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date rentalEndDate;
-
-    public Date getRentalStartDate() {
-        return rentalStartDate;
+    @JsonCreator
+    public LoginRequest(@JsonProperty("username") String username, @JsonProperty("password") String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public void setRentalStartDate(Date rentalStartDate) {
-        this.rentalStartDate = rentalStartDate;
+    public String getUsername() {
+        return username;
     }
 
-    public Date getRentalEndDate() {
-        return rentalEndDate;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setRentalEndDate(Date rentalEndDate) {
-        this.rentalEndDate = rentalEndDate;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
